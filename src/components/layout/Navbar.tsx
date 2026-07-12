@@ -154,6 +154,12 @@ export default function Navbar() {
                         </div>
                         <Link
                             className="hover:text-(--primary) transition-colors duration-200 cursor-pointer"
+                            href="/security"
+                        >
+                            Sicurezza
+                        </Link>
+                        <Link
+                            className="hover:text-(--primary) transition-colors duration-200 cursor-pointer"
                             href="/contacts"
                         >
                             Contattaci

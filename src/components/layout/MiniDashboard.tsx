@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import DashboardLogo from "@/assets/images/logo_mono_light.png";
+import FaviconIcon from "../../../public/favicon.png";
 import GoogleIcon from "@/assets/icons/google-logo.png";
 import DashboardIcon from "@/assets/icons/hugeicons/mini-dashboard/dashboard";
 import TagIcon from "@/assets/icons/hugeicons/mini-dashboard/labels";
@@ -311,7 +312,7 @@ export default function MiniDashboard() {
             >
                 <div className="flex h-full bg-[#f7f7f7] text-[#333]">
                     {/* ── Sidebar ── */}
-                    <aside className="relative w-52 flex-shrink-0 bg-white border-r border-[#e8e8e8] flex flex-col py-5">
+                    <aside className="relative w-52 shrink-0 bg-white border-r border-[#e8e8e8] flex flex-col py-5">
                         {/* Logo */}
                         <div className="flex justify-center mb-7">
                             <Image
@@ -339,14 +340,14 @@ export default function MiniDashboard() {
                                         key={label}
                                         className="flex items-center gap-2.5 px-2 py-2 rounded-lg text-[#999] select-none cursor-default"
                                     >
-                                        <Icon className="w-4 h-4 flex-shrink-0" />
+                                        <Icon className="w-4 h-4 shrink-0" />
                                         <span className="text-sm">{label}</span>
                                     </div>
                                 ))}
 
                                 {/* Labels — active & only interactive nav item */}
                                 <div className="flex items-center gap-2.5 px-2 py-2 rounded-lg bg-[#eef7f7] text-[#229799] select-none cursor-pointer">
-                                    <TagIcon className="w-4 h-4 flex-shrink-0" />
+                                    <TagIcon className="w-4 h-4 shrink-0" />
                                     <span className="text-sm font-medium">
                                         Labels
                                     </span>
@@ -368,7 +369,7 @@ export default function MiniDashboard() {
                                         key={label}
                                         className="flex items-center gap-2.5 px-2 py-2 rounded-lg text-[#999] select-none cursor-default"
                                     >
-                                        <Icon className="w-4 h-4 flex-shrink-0" />
+                                        <Icon className="w-4 h-4 shrink-0" />
                                         <span className="text-sm">{label}</span>
                                     </div>
                                 ))}
@@ -502,7 +503,13 @@ export default function MiniDashboard() {
                                                         }`}
                                                     >
                                                         {label.isSystem && (
-                                                            <SettingsIcon className="w-2.5 h-2.5 flex-shrink-0" />
+                                                            <Image
+                                                                src={FaviconIcon}
+                                                                alt=""
+                                                                width={10}
+                                                                height={10}
+                                                                className="shrink-0"
+                                                            />
                                                         )}
                                                         {label.name}
                                                     </span>
@@ -596,14 +603,14 @@ export default function MiniDashboard() {
                 createPortal(
                     <div
                         onClick={() => setShowCreateLabel(false)}
-                        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4"
+                        className="fixed inset-0 z-100 flex items-center justify-center bg-black/50 p-4"
                     >
                         <div
                             onClick={(e) => e.stopPropagation()}
                             className="w-full max-w-2xl max-h-[85vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
                         >
                             {/* Header */}
-                            <div className="flex items-center justify-between px-6 py-4 border-b border-[#eeeeee] flex-shrink-0">
+                            <div className="flex items-center justify-between px-6 py-4 border-b border-[#eeeeee] shrink-0">
                                 <h2 className="text-lg font-semibold text-[#333]">
                                     Create label
                                 </h2>
@@ -636,7 +643,7 @@ export default function MiniDashboard() {
                                     </label>
                                     <div className="flex items-center justify-between px-3 py-2.5 rounded-lg border border-[#e0e0e0] bg-[#f7f7f7] text-sm text-[#999] cursor-default select-none">
                                         No color selected (optional)
-                                        <ChevronDownIcon className="w-4 h-4 flex-shrink-0" />
+                                        <ChevronDownIcon className="w-4 h-4 shrink-0" />
                                     </div>
                                 </div>
 
@@ -649,7 +656,7 @@ export default function MiniDashboard() {
                                             <span className="truncate">
                                                 Always show in label list
                                             </span>
-                                            <ChevronDownIcon className="w-4 h-4 flex-shrink-0" />
+                                            <ChevronDownIcon className="w-4 h-4 shrink-0" />
                                         </div>
                                     </div>
                                     <div>
@@ -660,7 +667,7 @@ export default function MiniDashboard() {
                                             <span className="truncate">
                                                 Show messages for inbox
                                             </span>
-                                            <ChevronDownIcon className="w-4 h-4 flex-shrink-0" />
+                                            <ChevronDownIcon className="w-4 h-4 shrink-0" />
                                         </div>
                                     </div>
                                 </div>
@@ -708,7 +715,7 @@ export default function MiniDashboard() {
                                                 Formal - Molto formale,
                                                 autorevole
                                             </span>
-                                            <ChevronDownIcon className="w-4 h-4 flex-shrink-0" />
+                                            <ChevronDownIcon className="w-4 h-4 shrink-0" />
                                         </div>
                                     </div>
                                     <div>
@@ -719,7 +726,7 @@ export default function MiniDashboard() {
                                             <span className="truncate">
                                                 Concise - Breve e al punto
                                             </span>
-                                            <ChevronDownIcon className="w-4 h-4 flex-shrink-0" />
+                                            <ChevronDownIcon className="w-4 h-4 shrink-0" />
                                         </div>
                                     </div>
                                 </div>
@@ -731,7 +738,7 @@ export default function MiniDashboard() {
                                     className="flex items-center gap-2.5 cursor-pointer select-none w-fit"
                                 >
                                     <div
-                                        className={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 ${
+                                        className={`w-4 h-4 rounded flex items-center justify-center shrink-0 ${
                                             includeSignature
                                                 ? "bg-(--primary)"
                                                 : "border border-[#ccc] bg-white"
@@ -773,7 +780,7 @@ export default function MiniDashboard() {
                             </div>
 
                             {/* Footer */}
-                            <div className="flex items-center gap-3 px-6 py-4 border-t border-[#eeeeee] flex-shrink-0">
+                            <div className="flex items-center gap-3 px-6 py-4 border-t border-[#eeeeee] shrink-0">
                                 <button
                                     onClick={() => setShowCreateLabel(false)}
                                     className="flex-1 py-2.5 rounded-lg border border-[#e0e0e0] text-sm font-medium text-[#333] cursor-pointer select-none hover:bg-[#f7f7f7] transition-colors"
