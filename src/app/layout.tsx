@@ -6,6 +6,12 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
     title: "Newmann",
     description: "Newmann Website",
+    icons: {
+        icon: {
+            url: "/favicon.png",
+            type: "image/png",
+        },
+    },
 };
 
 export const viewport: Viewport = {
