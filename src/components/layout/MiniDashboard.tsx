@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import WhiteLogo from "@/assets/images/favicon_white.png";
+import DashboardLogo from "@/assets/images/logo_mono_light.png";
 import GoogleIcon from "@/assets/icons/google-logo.png";
 import DashboardIcon from "@/assets/icons/hugeicons/mini-dashboard/dashboard";
 import TagIcon from "@/assets/icons/hugeicons/mini-dashboard/labels";
@@ -315,14 +315,11 @@ export default function MiniDashboard() {
                         {/* Logo */}
                         <div className="flex justify-center mb-7">
                             <Image
-                                src={WhiteLogo}
+                                src={DashboardLogo}
                                 alt="Newmann logo"
-                                width={12}
-                                height={12}
+                                width={30}
+                                height={30}
                                 className="object-contain"
-                                style={{
-                                    filter: "invert(1) sepia(1) saturate(2) hue-rotate(155deg) brightness(0.6)",
-                                }}
                             />
                         </div>
 
@@ -592,7 +589,6 @@ export default function MiniDashboard() {
                         </main>
                     </div>
                 </div>
-
             </div>
 
             {/* Create label modal */}
@@ -612,9 +608,7 @@ export default function MiniDashboard() {
                                     Create label
                                 </h2>
                                 <button
-                                    onClick={() =>
-                                        setShowCreateLabel(false)
-                                    }
+                                    onClick={() => setShowCreateLabel(false)}
                                     className="text-[#999] hover:text-[#333] cursor-pointer transition-colors"
                                 >
                                     <CloseIcon className="w-5 h-5" />
@@ -676,15 +670,13 @@ export default function MiniDashboard() {
                                         Automated drafts
                                     </p>
                                     <p className="text-sm text-[#888] mt-1">
-                                        When enabled, automatic responses
-                                        will be generated for emails with
-                                        this label.
+                                        When enabled, automatic responses will
+                                        be generated for emails with this label.
                                     </p>
                                     <div className="inline-flex items-center gap-1 rounded-lg border border-[#e6e6e6] bg-white mt-3">
                                         {AUTOMATED_OPTS.map((opt) => {
                                             const isActive =
-                                                modalAutomated ===
-                                                opt.value;
+                                                modalAutomated === opt.value;
                                             return (
                                                 <button
                                                     key={opt.value}
@@ -783,17 +775,13 @@ export default function MiniDashboard() {
                             {/* Footer */}
                             <div className="flex items-center gap-3 px-6 py-4 border-t border-[#eeeeee] flex-shrink-0">
                                 <button
-                                    onClick={() =>
-                                        setShowCreateLabel(false)
-                                    }
+                                    onClick={() => setShowCreateLabel(false)}
                                     className="flex-1 py-2.5 rounded-lg border border-[#e0e0e0] text-sm font-medium text-[#333] cursor-pointer select-none hover:bg-[#f7f7f7] transition-colors"
                                 >
                                     Cancel
                                 </button>
                                 <button
-                                    onClick={() =>
-                                        setShowCreateLabel(false)
-                                    }
+                                    onClick={() => setShowCreateLabel(false)}
                                     className="flex-1 py-2.5 rounded-lg bg-[#229799] text-white text-sm font-medium cursor-pointer select-none hover:bg-[#1d8385] transition-colors"
                                 >
                                     Save

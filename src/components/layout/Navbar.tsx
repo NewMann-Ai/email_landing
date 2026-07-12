@@ -61,7 +61,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between px-4 py-4 md:p-6">
                 <div className="flex items-center gap-10">
                     <Link href="/">
-                        <Image src={Logo} alt="Logo" width={20} height={40} />
+                        <Image src={Logo} alt="Logo" width={40} height={40} />
                     </Link>
                     <div className="hidden md:flex items-center gap-4 text-(--text) text-sm">
                         {/* Prodotti with dropdown */}

@@ -34,7 +34,7 @@ export default function Footer() {
     return (
         <footer className="max-w-6xl w-full mx-auto px-4 py-16 mt-40">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-                <Image src={Logo} alt="Newmann logo" width={20} height={40} />
+                <Image src={Logo} alt="Newmann logo" width={40} height={40} />
 
                 {COLUMNS.map((column) => (
                     <div key={column.title} className="flex flex-col gap-3">
