@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import DashboardLogo from "@/assets/images/logo_mono_light.png";
@@ -281,12 +281,6 @@ const LABELS = [
         isSystem: true,
         hasAutomation: false,
     },
-    {
-        id: 4,
-        name: "Read only",
-        isSystem: true,
-        hasAutomation: false,
-    },
 ];
 
 const AUTOMATED_OPTS = [
@@ -335,23 +329,25 @@ export default function MiniDashboard() {
                                     { icon: DraftsIcon, label: "Drafts" },
                                     { icon: RulesIcon, label: "Rules" },
                                     { icon: AiIcon, label: "Ai Assistant" },
-                                ].map(({ icon: Icon, label }) => (
-                                    <div
-                                        key={label}
-                                        className="flex items-center gap-2.5 px-2 py-2 rounded-lg text-[#999] select-none cursor-default"
-                                    >
-                                        <Icon className="w-4 h-4 shrink-0" />
-                                        <span className="text-sm">{label}</span>
-                                    </div>
-                                ))}
+                                ].map(({ icon: Icon, label }, index) => (
+                                    <Fragment key={label}>
+                                        <div className="flex items-center gap-2.5 px-2 py-2 rounded-lg text-[#999] select-none cursor-default">
+                                            <Icon className="w-4 h-4 shrink-0" />
+                                            <span className="text-sm">
+                                                {label}
+                                            </span>
+                                        </div>
 
-                                {/* Labels — active & only interactive nav item */}
-                                <div className="flex items-center gap-2.5 px-2 py-2 rounded-lg bg-[#eef7f7] text-[#229799] select-none cursor-pointer">
-                                    <TagIcon className="w-4 h-4 shrink-0" />
-                                    <span className="text-sm font-medium">
-                                        Labels
-                                    </span>
-                                </div>
+                                        {index === 0 && (
+                                            <div className="flex items-center gap-2.5 px-2 py-2 rounded-lg bg-[#eef7f7] text-[#229799] select-none cursor-pointer">
+                                                <TagIcon className="w-4 h-4 shrink-0" />
+                                                <span className="text-sm font-medium">
+                                                    Labels
+                                                </span>
+                                            </div>
+                                        )}
+                                    </Fragment>
+                                ))}
                             </nav>
                         </div>
 
@@ -504,7 +500,9 @@ export default function MiniDashboard() {
                                                     >
                                                         {label.isSystem && (
                                                             <Image
-                                                                src={FaviconIcon}
+                                                                src={
+                                                                    FaviconIcon
+                                                                }
                                                                 alt=""
                                                                 width={10}
                                                                 height={10}

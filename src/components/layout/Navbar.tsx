@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../public/favicon_black.png";
 import Button from "../ui/Button";
 import LangSwitcher from "../ui/LangSwitcher";
 import GoogleIcon from "../../assets/icons/google-logo.png";
+import OutlookIcon from "../../assets/icons/outlook-logo.png";
 import Gmail from "../../assets/icons/hugeicons/gmail";
 import Users from "../../assets/icons/hugeicons/users";
 import DropdownArrow from "../../assets/icons/hugeicons/dropdown-arrow";
@@ -51,14 +52,34 @@ function CloseIcon({ className }: { className?: string }) {
 export default function Navbar() {
     const [open, setOpen] = useState(false);
     const [productsOpen, setProductsOpen] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const lastScrollY = useRef(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            setScrolled(currentScrollY > window.innerHeight * 0.8);
+            if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+                setHidden(true);
+            } else {
+                setHidden(false);
+            }
+            lastScrollY.current = currentScrollY;
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
         <nav
-            className={`fixed top-0 inset-x-0 md:left-[10vw] md:w-[80vw] z-50 ${
+            className={`fixed top-0 inset-x-0 z-50 md:transition-all md:duration-500 md:ease-in-out ${
+                hidden ? "md:-translate-y-full" : "md:translate-y-0"
+            } ${scrolled ? "md:bg-(--light-bg)" : "md:bg-transparent"} ${
                 open ? "h-screen bg-(--light-bg) flex flex-col" : ""
             }`}
         >
-            <div className="flex items-center justify-between px-4 py-4 md:p-6">
+            <div className="flex items-center justify-between px-4 py-4 md:px-[10vw] md:py-6">
                 <div className="flex items-center gap-10">
                     <Link href="/">
                         <Image src={Logo} alt="Logo" width={40} height={40} />
@@ -135,7 +156,7 @@ export default function Navbar() {
                                         </Link>
                                     </div>
                                 </div>
-                                {/* Digital Twin column */}
+                                {/* 
                                 <div className="flex flex-col gap-3 min-w-90">
                                     <div className="flex items-center gap-4 text-(--text) font-medium text-2xl">
                                         <span className="text-(--primary) bg-(--primary-10) p-2 rounded-lg">
@@ -149,7 +170,7 @@ export default function Navbar() {
                                             Coming soon
                                         </span>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <Link
@@ -176,19 +197,20 @@ export default function Navbar() {
                 <div className="hidden md:flex items-center gap-4">
                     <LangSwitcher />
                     <p className="text-(--subtext) font-thin text-sm">|</p>
-                    <Button
-                        type="secondary"
-                        icon={
-                            <Image
-                                src={GoogleIcon}
-                                alt="Google Logo"
-                                width={20}
-                                height={20}
-                            />
-                        }
-                    >
-                        Inizia con Gmail
-                    </Button>
+                    <Image
+                        src={GoogleIcon}
+                        alt="Google Logo"
+                        width={20}
+                        height={20}
+                        className="cursor-pointer hover:scale-110 transition-transform duration-200"
+                    />
+                    <Image
+                        src={OutlookIcon}
+                        alt="Outlook Logo"
+                        width={20}
+                        height={20}
+                        className="cursor-pointer hover:scale-110 transition-transform duration-200"
+                    />
                 </div>
 
                 {/* Mobile menu toggle */}
@@ -252,13 +274,13 @@ export default function Navbar() {
                             >
                                 Team
                             </Link>
-                            <Link
+                            {/* <Link
                                 href=""
                                 onClick={() => setOpen(false)}
                                 className="hover:text-(--primary) transition-colors duration-200"
                             >
                                 Digital Twin
-                            </Link>
+                            </Link> */}
                         </div>
                     )}
 
@@ -292,7 +314,21 @@ export default function Navbar() {
                                 />
                             }
                         >
-                            Inizia con Gmail
+                            Gmail
+                        </Button>
+                        <Button
+                            type="secondary"
+                            className="w-full mt-2"
+                            icon={
+                                <Image
+                                    src={OutlookIcon}
+                                    alt="Outlook Logo"
+                                    width={20}
+                                    height={20}
+                                />
+                            }
+                        >
+                            Outlook
                         </Button>
                     </div>
                 </div>

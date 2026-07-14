@@ -31,7 +31,13 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:3000/newmann-mail\")",
       "Bash(findstr :3000)",
       "Bash(taskkill //PID 9600 //F)",
-      "Bash(taskkill //PID 356 //F)"
+      "Bash(taskkill //PID 356 //F)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; foreach \\($f in @\\(\"src\\\\assets\\\\images\\\\inbox.png\",\"src\\\\assets\\\\images\\\\azienda.png\",\"src\\\\assets\\\\images\\\\logo_mono_light.png\",\"public\\\\favicon_black.png\"\\)\\) { $img = [System.Drawing.Image]::FromFile\\(\\(Resolve-Path $f\\)\\); Write-Output \"$f : $\\($img.Width\\) x $\\($img.Height\\)\"; $img.Dispose\\(\\) })",
+      "Bash(xargs -I{} sh -c 'echo === {} ===; tail -3 {}')",
+      "Bash(npx tsc *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")"
     ]
   }
 }
