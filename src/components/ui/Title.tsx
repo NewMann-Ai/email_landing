@@ -8,7 +8,7 @@ export default function Title({
     className?: string;
 }) {
     return (
-        <h1 className={`text-4xl md:text-6xl text-(--text) ${className || ""}`}>
+        <h1 className={`text-3xl md:text-6xl text-(--text) ${className || ""}`}>
             {children}
         </h1>
     );
