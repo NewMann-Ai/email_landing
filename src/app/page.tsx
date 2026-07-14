@@ -52,7 +52,7 @@ export default function Home() {
                 className="hidden md:block absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
-            <Reveal className="flex flex-col items-center justify-center mt-24 md:mt-40 px-4">
+            <Reveal className="flex flex-col items-center justify-center mt-24 md:mt-60 px-4">
                 <Title className="max-w-180 text-center">
                     Rispondi alle email nella{" "}
                     <span className="text-(--primary)">metà del tempo</span>
