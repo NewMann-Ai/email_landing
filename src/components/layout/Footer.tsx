@@ -1,45 +1,51 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../../public/favicon_black.png";
 import MailIcon from "@/assets/icons/hugeicons/mail";
 import LinkedInIcon from "@/assets/icons/hugeicons/linkedin";
-
-const COLUMNS = [
-    {
-        title: "PRODOTTI",
-        links: [
-            { label: "Newmann mail", href: "/newmann-mail" },
-            { label: "Sicurezza", href: "/security" },
-        ],
-    },
-    {
-        title: "RISORSE",
-        links: [
-            { label: "FAQ", href: "/faq" },
-            /* { label: "Supporto", href: "/support" }, */
-            { label: "Contattaci", href: "/contacts" },
-        ],
-    },
-    {
-        title: "AZIENDA",
-        links: [
-            {
-                label: "Cookie Policy",
-                href: "https://app.newmann.ai/cookie-policy",
-            },
-            {
-                label: "Privacy Policy",
-                href: "https://app.newmann.ai/privacy-policy",
-            },
-            {
-                label: "Termini e Condizioni",
-                href: "https://app.newmann.ai/terms-of-service",
-            },
-        ],
-    },
-];
+import { useDictionary } from "@/i18n/LocaleContext";
+import { commonDictionary } from "@/i18n/dictionaries/common";
 
 export default function Footer() {
+    const t = useDictionary(commonDictionary).footer;
+
+    const COLUMNS = [
+        {
+            title: t.columns.products,
+            links: [
+                { label: t.links.newmannMail, href: "/newmann-mail" },
+                { label: t.links.security, href: "/security" },
+            ],
+        },
+        {
+            title: t.columns.resources,
+            links: [
+                { label: t.links.faq, href: "/faq" },
+                /* { label: "Supporto", href: "/support" }, */
+                { label: t.links.contacts, href: "/contacts" },
+            ],
+        },
+        {
+            title: t.columns.company,
+            links: [
+                {
+                    label: t.links.cookiePolicy,
+                    href: "https://app.newmann.ai/cookie-policy",
+                },
+                {
+                    label: t.links.privacyPolicy,
+                    href: "https://app.newmann.ai/privacy-policy",
+                },
+                {
+                    label: t.links.terms,
+                    href: "https://app.newmann.ai/terms-of-service",
+                },
+            ],
+        },
+    ];
+
     return (
         <footer className="max-w-6xl w-full mx-auto px-4 py-16 mt-40">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
@@ -80,9 +86,7 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center justify-between mt-20">
-                <p className="text-sm text-(--subtext)">
-                    © 2026 Newmann. Tutti i diritti riservati.
-                </p>
+                <p className="text-sm text-(--subtext)">{t.copyright}</p>
 
                 <div className="flex items-center gap-3">
                     <a

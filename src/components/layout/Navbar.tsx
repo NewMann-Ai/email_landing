@@ -12,6 +12,8 @@ import Gmail from "../../assets/icons/hugeicons/gmail";
 import Users from "../../assets/icons/hugeicons/users";
 import DropdownArrow from "../../assets/icons/hugeicons/dropdown-arrow";
 import LinkArrow from "../../assets/icons/hugeicons/link-arrow";
+import { useDictionary } from "@/i18n/LocaleContext";
+import { commonDictionary } from "@/i18n/dictionaries/common";
 
 function MenuIcon({ className }: { className?: string }) {
     return (
@@ -55,6 +57,7 @@ export default function Navbar() {
     const [hidden, setHidden] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const lastScrollY = useRef(0);
+    const t = useDictionary(commonDictionary).navbar;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -88,7 +91,7 @@ export default function Navbar() {
                         {/* Prodotti with dropdown */}
                         <div className="relative group">
                             <button className="flex items-center gap-1 text-(--text) hover:text-(--primary) group-hover:text-(--primary) transition-colors duration-200 cursor-pointer">
-                                Prodotti
+                                {t.products}
                                 <DropdownArrow
                                     width={12}
                                     height={12}
@@ -104,7 +107,7 @@ export default function Navbar() {
                                         <span className="text-(--primary) bg-(--primary-10) p-2 rounded-lg">
                                             <Gmail width={20} height={20} />
                                         </span>
-                                        AI Email Assistant
+                                        {t.aiEmailAssistant}
                                     </div>
                                     <hr className="border-(--bento-stroke)" />
                                     <div className="flex flex-col gap-2 text-md text-(--subtext)">
@@ -112,7 +115,7 @@ export default function Navbar() {
                                             href="/newmann-mail"
                                             className="hover:text-(--primary) transition-colors duration-200 flex items-center gap-1"
                                         >
-                                            Newmann Mail
+                                            {t.newmannMail}
                                             <LinkArrow
                                                 width={16}
                                                 height={16}
@@ -124,7 +127,7 @@ export default function Navbar() {
                                                 href="/newmann-mail#inbox-organizer"
                                                 className="hover:text-(--primary) transition-colors duration-200 flex items-center gap-1"
                                             >
-                                                Inbox Organizer
+                                                {t.inboxOrganizer}
                                                 <LinkArrow
                                                     width={16}
                                                     height={16}
@@ -135,7 +138,7 @@ export default function Navbar() {
                                                 href="/newmann-mail#email-draft-writer"
                                                 className="hover:text-(--primary) transition-colors duration-200 flex items-center gap-1"
                                             >
-                                                Email Draft Writer
+                                                {t.emailDraftWriter}
                                                 <LinkArrow
                                                     width={16}
                                                     height={16}
@@ -147,7 +150,7 @@ export default function Navbar() {
                                             href="/team"
                                             className="hover:text-(--primary) transition-colors duration-200 flex items-center gap-1"
                                         >
-                                            Aziende
+                                            {t.aziende}
                                             <LinkArrow
                                                 width={16}
                                                 height={16}
@@ -177,19 +180,19 @@ export default function Navbar() {
                             className="hover:text-(--primary) transition-colors duration-200 cursor-pointer"
                             href="/security"
                         >
-                            Sicurezza
+                            {t.security}
                         </Link>
                         <Link
                             className="hover:text-(--primary) transition-colors duration-200 cursor-pointer"
                             href="/contacts"
                         >
-                            Contattaci
+                            {t.contacts}
                         </Link>
                         <Link
                             className="hover:text-(--primary) transition-colors duration-200 cursor-pointer"
                             href="/faq"
                         >
-                            FAQ
+                            {t.faq}
                         </Link>
                     </div>
                 </div>
@@ -202,7 +205,7 @@ export default function Navbar() {
                         className="w-full sm:w-auto"
                         href="https://landing.newmann.ai/"
                     >
-                        Inizia ora
+                        {t.startNow}
                     </Button>
                 </div>
 
@@ -210,7 +213,7 @@ export default function Navbar() {
                 <button
                     className="md:hidden text-(--text) cursor-pointer"
                     onClick={() => setOpen((v) => !v)}
-                    aria-label="Menu"
+                    aria-label={t.menu}
                 >
                     {open ? (
                         <CloseIcon className="w-6 h-6" />
@@ -227,7 +230,7 @@ export default function Navbar() {
                         className="flex items-center justify-between cursor-pointer"
                         onClick={() => setProductsOpen((v) => !v)}
                     >
-                        Prodotti
+                        {t.products}
                         <DropdownArrow
                             width={12}
                             height={12}
@@ -238,34 +241,34 @@ export default function Navbar() {
                     </button>
 
                     {productsOpen && (
-                        <div className="flex flex-col gap-3 pl-3 border-l border-(--bento-stroke) text-(--subtext)">
+                        <div className="flex flex-col gap-4 pl-8 text-(--subtext)">
                             <Link
                                 href="/newmann-mail"
                                 onClick={() => setOpen(false)}
                                 className="hover:text-(--primary) transition-colors duration-200"
                             >
-                                Newmann Mail
+                                {t.newmannMail}
                             </Link>
                             <Link
                                 href="/newmann-mail#inbox-organizer"
                                 onClick={() => setOpen(false)}
                                 className="hover:text-(--primary) transition-colors duration-200"
                             >
-                                Inbox Organizer
+                                {t.inboxOrganizer}
                             </Link>
                             <Link
                                 href="/newmann-mail#email-draft-writer"
                                 onClick={() => setOpen(false)}
                                 className="hover:text-(--primary) transition-colors duration-200"
                             >
-                                Email Draft Writer
+                                {t.emailDraftWriter}
                             </Link>
                             <Link
                                 href="/team"
                                 onClick={() => setOpen(false)}
                                 className="hover:text-(--primary) transition-colors duration-200"
                             >
-                                Team
+                                {t.team}
                             </Link>
                             {/* <Link
                                 href=""
@@ -282,14 +285,14 @@ export default function Navbar() {
                         onClick={() => setOpen(false)}
                         className="hover:text-(--primary) transition-colors duration-200"
                     >
-                        Contattaci
+                        {t.contacts}
                     </Link>
                     <Link
                         href="/faq"
                         onClick={() => setOpen(false)}
                         className="hover:text-(--primary) transition-colors duration-200"
                     >
-                        FAQ
+                        {t.faq}
                     </Link>
 
                     <LangSwitcher />
@@ -300,7 +303,7 @@ export default function Navbar() {
                             className="w-full"
                             href="https://landing.newmann.ai/"
                         >
-                            Inizia ora
+                            {t.startNow}
                         </Button>
                     </div>
                 </div>

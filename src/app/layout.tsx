@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "../styles/globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { LocaleProvider } from "@/i18n/LocaleContext";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/utils/seo";
 
 export const metadata: Metadata = {
@@ -181,9 +182,11 @@ export default function RootLayout({
                 />
             </head>
             <body>
-                <Navbar />
-                <main id="main">{children}</main>
-                <Footer />
+                <LocaleProvider>
+                    <Navbar />
+                    <main id="main">{children}</main>
+                    <Footer />
+                </LocaleProvider>
             </body>
         </html>
     );
