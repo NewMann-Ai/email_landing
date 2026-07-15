@@ -4,6 +4,20 @@ import Title from "../../components/ui/Title";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import MailIcon from "@/assets/icons/hugeicons/mail";
+import { buildMetadata } from "@/utils/seo";
+
+export const metadata = buildMetadata({
+    title: "Supporto — Risposta in meno di 2 ore",
+    description:
+        "Il supporto di Newmann ti risponde in meno di 2 ore via email, chat e documentazione. Guide, tutorial video e onboarding personalizzato.",
+    path: "/support",
+    keywords: [
+        "supporto Newmann",
+        "help desk email AI",
+        "documentazione Newmann",
+        "assistenza Newmann Mail",
+    ],
+});
 
 function ChatIcon({ className }: { className?: string }) {
     return (
@@ -109,7 +123,7 @@ export default function Support() {
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="White Logo"
+                alt="" aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -119,7 +133,7 @@ export default function Support() {
                     Supporto
                 </span>
 
-                <Title className="max-w-220 text-center mt-4">
+                <Title as={1} className="max-w-220 text-center mt-4">
                     Supporto Che Non Ti Fa Impazzire:{" "}
                     <span className="text-(--primary)">
                         Risposte in Meno di 2 Ore

@@ -5,6 +5,20 @@ import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import UsersIcon from "@/assets/icons/hugeicons/users";
 import GoogleVerifiedIcon from "@/assets/icons/hugeicons/google-verified";
+import { buildMetadata } from "@/utils/seo";
+
+export const metadata = buildMetadata({
+    title: "Team — Gestione strutturata del workspace",
+    description:
+        "Organizza il tuo workspace Newmann in dipartimenti e micro-team con contesti AI indipendenti, permessi granulari e automazioni personalizzate.",
+    path: "/team",
+    keywords: [
+        "Newmann Team",
+        "workspace aziendale AI",
+        "gestione team email",
+        "automazione team",
+    ],
+});
 
 function CheckIcon({ className }: { className?: string }) {
     return (
@@ -88,7 +102,7 @@ export default function Team() {
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="White Logo"
+                alt="" aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -98,7 +112,7 @@ export default function Team() {
                     Team
                 </span>
 
-                <Title className="max-w-220 text-center mt-4">
+                <Title as={1} className="max-w-220 text-center mt-4">
                     Gestione Strutturata del{" "}
                     <span className="text-(--primary)">Team</span>
                 </Title>

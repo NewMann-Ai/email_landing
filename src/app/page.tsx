@@ -1,22 +1,38 @@
-import Image from "next/image";
-import Link from "next/link";
-import WhiteLogo from "../assets/images/favicon_white.png";
-import GoogleIcon from "../assets/icons/google-logo.png";
-import OutlookIcon from "../assets/icons/outlook-logo.png";
-import Title from "../components/ui/Title";
-import Button from "@/components/ui/Button";
-import Reveal from "@/components/ui/Reveal";
-import Counter from "@/components/ui/Counter";
-import MiniDashboard from "@/components/layout/MiniDashboard";
-import Testimonials from "@/components/layout/Testimonials";
-import {
-    InboxPreview,
-    AziendaPreview,
-} from "@/components/layout/BentoPreviews";
 import GdprIcon from "@/assets/icons/hugeicons/gdpr";
 import GoogleVerifiedIcon from "@/assets/icons/hugeicons/google-verified";
-import MicrosoftVerifiedIcon from "@/assets/icons/hugeicons/microsoft-verified";
 import LinkArrowIcon from "@/assets/icons/hugeicons/link-arrow";
+import MicrosoftVerifiedIcon from "@/assets/icons/hugeicons/microsoft-verified";
+import {
+    AziendaPreview,
+    InboxPreview,
+} from "@/components/layout/BentoPreviews";
+import MiniDashboard from "@/components/layout/MiniDashboard";
+import Testimonials from "@/components/layout/Testimonials";
+import Button from "@/components/ui/Button";
+import Counter from "@/components/ui/Counter";
+import Reveal from "@/components/ui/Reveal";
+import { buildMetadata } from "@/utils/seo";
+import Image from "next/image";
+import Link from "next/link";
+import GoogleIcon from "../assets/icons/google-logo.png";
+import OutlookIcon from "../assets/icons/outlook-logo.png";
+import WhiteLogo from "../assets/images/favicon_white.png";
+import Title from "../components/ui/Title";
+
+export const metadata = buildMetadata({
+    title: "Rispondi alle email in metà del tempo",
+    description:
+        "Newmann è l'assistente AI per Gmail e Outlook: capisce il contesto delle tue email, suggerisce risposte pronte e organizza automaticamente la tua inbox. GDPR compliant.",
+    path: "/",
+    keywords: [
+        "assistente email AI",
+        "Gmail AI",
+        "Outlook AI",
+        "gestione inbox",
+        "automazione email aziendale",
+        "risposte automatiche email",
+    ],
+});
 
 const STATS = [
     { value: "+60%", label: "Risposte più rapide" },
@@ -48,12 +64,13 @@ export default function Home() {
         <section className="relative overflow-hidden min-h-screen">
             <Image
                 src={WhiteLogo}
-                alt="White Logo"
+                alt=""
+                aria-hidden={true}
                 className="hidden md:block absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
             <Reveal className="flex flex-col items-center justify-center mt-50 md:mt-60 px-4">
-                <Title className="max-w-180 text-center">
+                <Title as={1} className="max-w-180 text-center">
                     Rispondi alle email nella{" "}
                     <span className="text-(--primary)">metà del tempo</span>
                 </Title>
@@ -198,9 +215,9 @@ export default function Home() {
                     <span className="text-(--primary)">ogni dimensione</span>
                 </Title>
 
-                <p className="text-center text-(--subtext) mt-4">
-                    Leggi cosa dice chi ha provato Newmann
-                </p>
+        <p className="text-center text-(--subtext) mt-4">
+          Leggi cosa dice chi ha provato Newmann
+        </p>
 
                 <div className="mt-8 md:mt-16 w-full">
                     <Testimonials />
