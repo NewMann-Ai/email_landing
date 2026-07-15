@@ -3,13 +3,22 @@ import WhiteLogo from "../../assets/images/favicon_white.png";
 import Title from "../../components/ui/Title";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
+import { buildMetadata } from "@/utils/seo";
+
+export const metadata = buildMetadata({
+    title: "Contatti",
+    description:
+        "Contatta il team di Newmann. Scrivi a info@newmann.ai o compila il form: rispondiamo entro 3 ore.",
+    path: "/contacts",
+    keywords: ["contatti Newmann", "supporto Newmann", "info@newmann.ai"],
+});
 
 export default function Contacts() {
     return (
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="White Logo"
+                alt="" aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -19,7 +28,7 @@ export default function Contacts() {
                     Contattaci
                 </span>
 
-                <Title className="max-w-220 text-center mt-4">
+                <Title as={1} className="max-w-220 text-center mt-4">
                     Hai Domande?{" "}
                     <span className="text-(--primary)">
                         Il Team di Newmann è Qui

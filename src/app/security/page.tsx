@@ -5,6 +5,21 @@ import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import GdprIcon from "@/assets/icons/hugeicons/gdpr";
 import DatabaseIcon from "@/assets/icons/hugeicons/database";
+import { buildMetadata } from "@/utils/seo";
+
+export const metadata = buildMetadata({
+    title: "Sicurezza — GDPR, AI Act, Zero Data Retention",
+    description:
+        "Newmann è GDPR compliant, allineato all'AI Act e non conserva i tuoi dati (Zero Data Retention). Integrazioni verificate Google e Microsoft.",
+    path: "/security",
+    keywords: [
+        "sicurezza Newmann",
+        "GDPR AI email",
+        "AI Act",
+        "Zero Data Retention",
+        "email crittografate",
+    ],
+});
 
 function CheckIcon({ className }: { className?: string }) {
     return (
@@ -81,7 +96,7 @@ export default function Security() {
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="White Logo"
+                alt="" aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -91,7 +106,7 @@ export default function Security() {
                     Sicurezza
                 </span>
 
-                <Title className="max-w-220 text-center mt-4">
+                <Title as={1} className="max-w-220 text-center mt-4">
                     Sicurezza Enterprise, Privacy Totale: GDPR, AI Act,{" "}
                     <span className="text-(--primary)">
                         Zero Data Retention

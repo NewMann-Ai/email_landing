@@ -3,6 +3,19 @@ import WhiteLogo from "../../assets/images/favicon_white.png";
 import Title from "../../components/ui/Title";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
+import { buildMetadata } from "@/utils/seo";
+
+export const metadata = buildMetadata({
+    title: "Termini di Servizio",
+    description:
+        "Termini di servizio di Newmann: uso accettabile, limitazioni di responsabilità, terminazione, indennizzo e modifiche ai termini.",
+    path: "/terms",
+    keywords: [
+        "termini di servizio Newmann",
+        "condizioni d'uso",
+        "termini di utilizzo email AI",
+    ],
+});
 
 function CheckIcon({ className }: { className?: string }) {
     return (
@@ -60,7 +73,7 @@ export default function Terms() {
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="White Logo"
+                alt="" aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -70,7 +83,7 @@ export default function Terms() {
                     Termini e Condizioni
                 </span>
 
-                <Title className="max-w-220 text-center mt-4">
+                <Title as={1} className="max-w-220 text-center mt-4">
                     Termini di Servizio Chiari,{" "}
                     <span className="text-(--primary)">Senza Sorprese</span>
                 </Title>

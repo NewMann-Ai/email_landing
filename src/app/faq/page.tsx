@@ -1,79 +1,49 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import WhiteLogo from "../../assets/images/favicon_white.png";
 import Title from "../../components/ui/Title";
 import Reveal from "@/components/ui/Reveal";
-import DropdownArrow from "@/assets/icons/hugeicons/dropdown-arrow";
+import { buildMetadata } from "@/utils/seo";
+import { FAQS } from "./faqs";
+import FaqItem from "./FaqItem";
 
-const FAQS = [
-    {
-        question: "Newmann ha accesso alle mie email?",
-        answer: "Newmann ha accesso alle email per processarle, ma non le archivia. GDPR e Zero Data Retention: i tuoi dati rimangono tuoi.",
-    },
-    {
-        question: "E se genero una bozza sbagliata?",
-        answer: "Human-in-the-loop: tu rivedi sempre prima di inviare. L'AI è il tuo assistente, non il tuo sostituto.",
-    },
-    {
-        question: "Quanto tempo prima di vedere risultati?",
-        answer: "24-48 ore. Newmann impara dal tuo primo batch di email e inizia a funzionare al 100% entro 4 giorni.",
-    },
-    {
-        question: "Posso cancellare i miei dati?",
-        answer: "In qualsiasi momento. Scrivi a info@newmann.ai e avremo completato in 24 ore.",
-    },
-    {
-        question: "E il training dei modelli AI?",
-        answer: "Zero Data Retention. Non usiamo i tuoi dati per addestrare modelli.",
-    },
-    {
-        question: "Qual è il tempo di setup?",
-        answer: "10 minuti. Autorizza Newmann, settaggi di base, fatto.",
-    },
-];
-
-function FaqItem({
-    question,
-    answer,
-}: {
-    question: string;
-    answer: string;
-}) {
-    const [open, setOpen] = useState(false);
-
-    return (
-        <div className="bg-(--bento-bg) rounded-2xl border border-(--bento-stroke) overflow-hidden">
-            <button
-                onClick={() => setOpen((v) => !v)}
-                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer"
-            >
-                <span className="text-(--text) font-semibold">
-                    {question}
-                </span>
-                <DropdownArrow
-                    width={16}
-                    height={16}
-                    className={`flex-shrink-0 text-(--subtext) transition-transform duration-200 ${
-                        open ? "rotate-0" : "rotate-180"
-                    }`}
-                />
-            </button>
-
-            {open && (
-                <p className="text-(--subtext) px-6 pb-5">{answer}</p>
-            )}
-        </div>
-    );
-}
+export const metadata = buildMetadata({
+    title: "Domande frequenti",
+    description:
+        "Risposte alle domande più frequenti su Newmann: sicurezza dei dati, GDPR, tempi di setup, cancellazione dati, uso dei modelli AI.",
+    path: "/faq",
+    keywords: [
+        "FAQ Newmann",
+        "domande frequenti assistente email",
+        "sicurezza email AI",
+        "GDPR email AI",
+    ],
+});
 
 export default function Faq() {
+    const faqJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: FAQS.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+            },
+        })),
+    };
+
     return (
-        <section className="relative overflow-hidden">
+        <section className="relative overflow-hidden" aria-labelledby="faq-title">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+            />
+
             <Image
                 src={WhiteLogo}
-                alt="White Logo"
+                alt=""
+                aria-hidden="true"
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -83,9 +53,14 @@ export default function Faq() {
                     FAQ
                 </span>
 
-                <Title className="max-w-220 text-center mt-4">
-                    Domande Frequenti su{" "}
-                    <span className="text-(--primary)">Newmann</span>
+                <Title
+                    as={1}
+                    className="max-w-220 text-center mt-4"
+                >
+                    <span id="faq-title">
+                        Domande Frequenti su{" "}
+                        <span className="text-(--primary)">Newmann</span>
+                    </span>
                 </Title>
             </Reveal>
 

@@ -11,6 +11,22 @@ import RulesImg from "@/assets/images/dashboard/rules.png";
 import DraftsImg from "@/assets/images/dashboard/drafts.png";
 import AiImg from "@/assets/images/dashboard/ai.png";
 import SettingsImg from "@/assets/images/dashboard/settings.png";
+import { buildMetadata } from "@/utils/seo";
+
+export const metadata = buildMetadata({
+    title: "Newmann Mail — Automazione AI per email aziendali",
+    description:
+        "Newmann Mail legge, classifica e risponde alle tue email aziendali con AI. Bozze automatiche, labels intelligenti, regole e integrazione Gmail e Outlook.",
+    path: "/newmann-mail",
+    keywords: [
+        "Newmann Mail",
+        "email aziendali AI",
+        "bozze automatiche",
+        "assistente Gmail",
+        "assistente Outlook",
+        "Digital Twin email",
+    ],
+});
 
 const INBOX_ORGANIZER_BENEFITS = [
     "Trovi quello che cerchi in 3 secondi, non in 3 minuti",
@@ -49,7 +65,7 @@ export default function NewmannMail() {
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="White Logo"
+                alt="" aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -59,7 +75,7 @@ export default function NewmannMail() {
                     Newmann Mail
                 </span>
 
-                <Title className="max-w-220 text-center mt-4">
+                <Title as={1} className="max-w-220 text-center mt-4">
                     Autorizza la Gestione delle{" "}
                     <span className="text-(--primary)">
                         {" "}

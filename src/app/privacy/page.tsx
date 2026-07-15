@@ -3,6 +3,20 @@ import WhiteLogo from "../../assets/images/favicon_white.png";
 import Title from "../../components/ui/Title";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
+import { buildMetadata } from "@/utils/seo";
+
+export const metadata = buildMetadata({
+    title: "Privacy Policy",
+    description:
+        "Come Newmann gestisce i tuoi dati: retention limitata, diritti GDPR (accesso, portabilità, oblio, rettifica) e zero training sui tuoi contenuti.",
+    path: "/privacy",
+    keywords: [
+        "privacy policy Newmann",
+        "GDPR Newmann",
+        "diritti utente",
+        "gestione dati email AI",
+    ],
+});
 
 function CheckIcon({ className }: { className?: string }) {
     return (
@@ -76,7 +90,7 @@ export default function Privacy() {
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="White Logo"
+                alt="" aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -86,7 +100,7 @@ export default function Privacy() {
                     Privacy
                 </span>
 
-                <Title className="max-w-220 text-center mt-4">
+                <Title as={1} className="max-w-220 text-center mt-4">
                     La Tua Privacy{" "}
                     <span className="text-(--primary)">Non È Negoziabile</span>
                 </Title>

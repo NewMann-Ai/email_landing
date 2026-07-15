@@ -1,0 +1,34 @@
+# Newmann
+
+> Newmann è l'assistente AI per Gmail e Outlook che comprende il contesto delle email, scrive bozze di risposta e mantiene la inbox aziendale sotto controllo. Il servizio è GDPR compliant, verificato Google e Microsoft, con Zero Data Retention e allineato all'AI Act europeo.
+
+Newmann si rivolge a professionisti e team aziendali che vogliono ridurre il tempo speso in gestione della posta elettronica. La piattaforma apprende dai processi dell'azienda (Digital Twin) e automatizza attività ripetitive come classificazione, etichettatura e stesura di risposte, lasciando all'utente il controllo finale (human-in-the-loop).
+
+## Prodotto
+- [Newmann Mail](https://newmann.ai/newmann-mail): funzionalità dettagliate del prodotto — bozze automatiche, labels intelligenti, regole personalizzate, integrazione Gmail e Outlook, memoria aziendale (Digital Twin).
+- [Team](https://newmann.ai/team): gestione strutturata del workspace in dipartimenti e micro-team con contesti AI indipendenti e permessi granulari.
+
+## Sicurezza e conformità
+- [Sicurezza](https://newmann.ai/security): pilastri di sicurezza (GDPR, AI Act, Zero Data Retention), integrazioni verificate Google e Microsoft, crittografia in transito e a riposo.
+- [Privacy Policy](https://newmann.ai/privacy): retention dei dati, diritti GDPR (accesso, portabilità, oblio, rettifica), zero training sui contenuti dell'utente.
+- [Termini di Servizio](https://newmann.ai/terms): uso accettabile, limitazioni di responsabilità, terminazione, modifiche ai termini.
+
+## Supporto
+- [FAQ](https://newmann.ai/faq): risposte alle domande frequenti su accesso ai dati, revisione delle bozze, tempi di setup, uso dei modelli AI.
+- [Supporto](https://newmann.ai/support): canali di supporto (email, chat, documentazione), risposta garantita in meno di 2 ore.
+- [Contatti](https://newmann.ai/contacts): form di contatto e email diretta info@newmann.ai (risposta entro 3 ore).
+
+## Fatti chiave
+- Nome prodotto: Newmann / Newmann Mail
+- Categoria: assistente AI per email aziendali (Business Application)
+- Piattaforme supportate: Gmail, Outlook
+- Lingua principale del sito: Italiano
+- Email di contatto: info@newmann.ai
+- Conformità: GDPR, AI Act (UE), Zero Data Retention
+- Verifiche: Google Verified, Microsoft Verified
+- Tempo medio di setup: 10 minuti
+- Tempo medio a regime: 24-48 ore
+- Risultati tipici: +85% risposte più rapide, 6 ore risparmiate a settimana, -45% tempo medio di gestione, 99,9% affidabilità
+- Metodologia: human-in-the-loop (l'utente rivede sempre prima di inviare)
+- Cancellazione dati: completata entro 24 ore su richiesta a info@newmann.ai
+- Uso dei dati per training: nessuno (Zero Data Retention)
