@@ -147,7 +147,7 @@ export default function Navbar() {
                                             href="/team"
                                             className="hover:text-(--primary) transition-colors duration-200 flex items-center gap-1"
                                         >
-                                            Team
+                                            Aziende
                                             <LinkArrow
                                                 width={16}
                                                 height={16}
@@ -197,7 +197,11 @@ export default function Navbar() {
                 <div className="hidden md:flex items-center gap-4">
                     <LangSwitcher />
                     <p className="text-(--subtext) font-thin text-sm">|</p>
-                    <Button type="secondary" className="w-full sm:w-auto">
+                    <Button
+                        type="secondary"
+                        className="w-full sm:w-auto"
+                        href="https://landing.newmann.ai/"
+                    >
                         Inizia ora
                     </Button>
                 </div>
@@ -291,7 +295,11 @@ export default function Navbar() {
                     <LangSwitcher />
 
                     <div className="mt-auto">
-                        <Button type="primary" className="w-full">
+                        <Button
+                            type="primary"
+                            className="w-full"
+                            href="https://landing.newmann.ai/"
+                        >
                             Inizia ora
                         </Button>
                     </div>

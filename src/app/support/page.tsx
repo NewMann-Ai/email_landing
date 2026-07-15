@@ -83,17 +83,6 @@ const SUPPORT_CHANNELS = [
         icon: MailIcon,
         title: "Email",
         description: "info@newmann.ai",
-        meta: "Response time: < 1 ora",
-    },
-    {
-        icon: ChatIcon,
-        title: "Chat Live",
-        description: "Disponibile 9-18 CET, Lunedì-Venerdì",
-    },
-    {
-        icon: BookIcon,
-        title: "Knowledge Base",
-        description: "20+ articoli e guide step-by-step",
     },
     {
         icon: PlayIcon,
@@ -123,7 +112,8 @@ export default function Support() {
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="" aria-hidden={true}
+                alt=""
+                aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -167,11 +157,6 @@ export default function Support() {
                                 <p className="text-sm text-(--subtext) mt-1">
                                     {channel.description}
                                 </p>
-                                {channel.meta && (
-                                    <p className="text-xs text-(--primary) font-medium mt-1">
-                                        {channel.meta}
-                                    </p>
-                                )}
                             </div>
                         </Reveal>
                     ))}

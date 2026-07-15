@@ -16,16 +16,25 @@ const COLUMNS = [
         title: "RISORSE",
         links: [
             { label: "FAQ", href: "/faq" },
-            { label: "Supporto", href: "/support" },
+            /* { label: "Supporto", href: "/support" }, */
+            { label: "Contattaci", href: "/contacts" },
         ],
     },
     {
         title: "AZIENDA",
         links: [
-            { label: "Contattaci", href: "/contacts" },
-            { label: "Cookie Policy", href: "/cookies" },
-            { label: "Privacy Policy", href: "/privacy" },
-            { label: "Termini e Condizioni", href: "/terms" },
+            {
+                label: "Cookie Policy",
+                href: "https://app.newmann.ai/cookie-policy",
+            },
+            {
+                label: "Privacy Policy",
+                href: "https://app.newmann.ai/privacy-policy",
+            },
+            {
+                label: "Termini e Condizioni",
+                href: "https://app.newmann.ai/terms-of-service",
+            },
         ],
     },
 ];
@@ -42,15 +51,29 @@ export default function Footer() {
                             {column.title}
                         </p>
                         <div className="flex flex-col gap-2">
-                            {column.links.map((link) => (
-                                <Link
-                                    key={link.label}
-                                    href={link.href || "#"}
-                                    className="text-sm text-(--subtext) hover:text-(--primary) transition-colors duration-200"
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
+                            {column.links.map((link) => {
+                                const isExternal = link.href.startsWith("http");
+
+                                return isExternal ? (
+                                    <a
+                                        key={link.label}
+                                        href={link.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-(--subtext) hover:text-(--primary) transition-colors duration-200"
+                                    >
+                                        {link.label}
+                                    </a>
+                                ) : (
+                                    <Link
+                                        key={link.label}
+                                        href={link.href || "#"}
+                                        className="text-sm text-(--subtext) hover:text-(--primary) transition-colors duration-200"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                 ))}

@@ -1,7 +1,7 @@
 import GdprIcon from "@/assets/icons/hugeicons/gdpr";
-import GoogleVerifiedIcon from "@/assets/icons/hugeicons/google-verified";
 import LinkArrowIcon from "@/assets/icons/hugeicons/link-arrow";
-import MicrosoftVerifiedIcon from "@/assets/icons/hugeicons/microsoft-verified";
+import SparklesIcon from "@/assets/icons/hugeicons/sparkles";
+import Users from "@/assets/icons/hugeicons/users";
 import {
     AziendaPreview,
     InboxPreview,
@@ -14,8 +14,6 @@ import Reveal from "@/components/ui/Reveal";
 import { buildMetadata } from "@/utils/seo";
 import Image from "next/image";
 import Link from "next/link";
-import GoogleIcon from "../assets/icons/google-logo.png";
-import OutlookIcon from "../assets/icons/outlook-logo.png";
 import WhiteLogo from "../assets/images/favicon_white.png";
 import Title from "../components/ui/Title";
 
@@ -48,14 +46,16 @@ const SECURITY = [
             "Conformità totale al Regolamento Generale sulla Protezione dei Dati e all'AI Act",
     },
     {
-        icon: GoogleVerifiedIcon,
-        title: "Google Verified",
-        description: "Software approvato dai sistemi di sicurezza Google.",
+        icon: Users,
+        title: "Privacy by Design",
+        description:
+            "Nessuna vendita dei tuoi dati, nessun profiling. La tua privacy non è negoziabile.",
     },
     {
-        icon: MicrosoftVerifiedIcon,
-        title: "Microsoft Verified",
-        description: "Software approvato dai sistemi di sicurezza Microsoft.",
+        icon: SparklesIcon,
+        title: "Termini Trasparenti",
+        description:
+            "Condizioni di servizio chiare, senza clausole nascoste o sorprese.",
     },
 ];
 
@@ -81,7 +81,11 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 w-full max-w-100 sm:max-w-none">
-                    <Button type="primary" className="w-full sm:w-auto">
+                    <Button
+                        type="primary"
+                        className="w-full sm:w-auto"
+                        href="https://landing.newmann.ai/"
+                    >
                         Inizia ora
                     </Button>
                 </div>
@@ -97,7 +101,11 @@ export default function Home() {
                     <span className="text-(--primary)">contano davvero</span>
                 </Title>
 
-                <Button type="primary" className="w-full sm:w-auto mt-10">
+                <Button
+                    type="primary"
+                    className="w-full sm:w-auto mt-10"
+                    href="/newmann-mail"
+                >
                     Scopri di più
                 </Button>
 
@@ -247,7 +255,11 @@ export default function Home() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 w-full max-w-100 sm:max-w-none">
-                            <Button type="primary" className="w-full sm:w-auto">
+                            <Button
+                                type="primary"
+                                className="w-full sm:w-auto"
+                                href="https://landing.newmann.ai/"
+                            >
                                 Inizia ora
                             </Button>
                         </div>

@@ -8,15 +8,15 @@ import GoogleVerifiedIcon from "@/assets/icons/hugeicons/google-verified";
 import { buildMetadata } from "@/utils/seo";
 
 export const metadata = buildMetadata({
-    title: "Team — Gestione strutturata del workspace",
+    title: "Aziende — Gestione strutturata del workspace",
     description:
-        "Organizza il tuo workspace Newmann in dipartimenti e micro-team con contesti AI indipendenti, permessi granulari e automazioni personalizzate.",
+        "Organizza il tuo workspace Newmann in dipartimenti e micro-aziende con contesti AI indipendenti, permessi granulari e automazioni personalizzate.",
     path: "/team",
     keywords: [
-        "Newmann Team",
+        "Newmann aziende",
         "workspace aziendale AI",
-        "gestione team email",
-        "automazione team",
+        "gestione aziendale email",
+        "automazione aziendale",
     ],
 });
 
@@ -71,9 +71,7 @@ const TEAM_FEATURES = [
         icon: UsersIcon,
         title: "Creazione di Dipartimenti e Team",
         points: [
-            "Dividi il workspace in Sales, Customer Service, Operations, ecc.",
-            "Ogni team ha le sue regole, le sue automazioni, il suo contesto",
-            "Gestione centralizzata dall'admin panel",
+            "Dividi il workspace aziendale in Teams come: Sales, Customer Service, Operations, ecc. ",
         ],
     },
     {
@@ -102,32 +100,33 @@ export default function Team() {
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="" aria-hidden={true}
+                alt=""
+                aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
             {/* Intro */}
             <Reveal className="flex flex-col items-center justify-center mt-24 md:mt-60 px-4">
                 <span className="text-(--primary) bg-(--primary-10) border border-(--primary) rounded-2xl px-4 py-1 text-sm">
-                    Team
+                    Aziende
                 </span>
 
                 <Title as={1} className="max-w-220 text-center mt-4">
-                    Gestione Strutturata del{" "}
-                    <span className="text-(--primary)">Team</span>
+                    Gestione Strutturata delle{" "}
+                    <span className="text-(--primary)">Aziende</span>
                 </Title>
 
                 <p className="text-center text-(--subtext) mt-10 max-w-220">
-                    La funzionalità Team permette di strutturare il workspace
-                    aziendale in dipartimenti e micro-team, con contesti AI
-                    indipendenti e configurazione granulare delle automazioni.
-                    Newmann non impara solo dal singolo utente: impara dal tuo
-                    team, dalla tua azienda, dalle vostre procedure.
+                    La funzionalità Aziende permette di strutturare il workspace
+                    aziendale in dipartimenti, con contesti AI indipendenti e
+                    configurazione granulare delle automazioni. Newmann non
+                    impara solo dal singolo utente: impara dalla tua azienda,
+                    dalle vostre procedure.
                 </p>
             </Reveal>
 
             {/* Cosa puoi fare */}
-            <div className="mt-24 md:mt-60 px-4">
+            <div className="mt-24 md:mt-40 px-4">
                 <Reveal className="flex flex-col items-center justify-center">
                     <Title className="max-w-180 text-center">
                         Cosa Puoi <span className="text-(--primary)">Fare</span>
@@ -177,7 +176,7 @@ export default function Team() {
             </div>
 
             {/* Closing CTA */}
-            <Reveal className="mt-24 md:mt-60 max-w-6xl w-full mx-auto px-4">
+            <Reveal className="mt-24 md:mt-40 max-w-6xl w-full mx-auto px-4">
                 <div className="relative overflow-hidden rounded-[40px] bg-(--section-bg) border border-(--bento-stroke) py-12 md:py-24 px-6 md:px-8">
                     <Image
                         src={WhiteLogo}
@@ -202,8 +201,9 @@ export default function Team() {
                         <Button
                             type="primary"
                             className="w-full sm:w-auto mt-10"
+                            href="https://landing.newmann.ai/"
                         >
-                            Scopri Come Il Tuo Team Può Scalare
+                            Inizia ora
                         </Button>
                     </div>
                 </div>

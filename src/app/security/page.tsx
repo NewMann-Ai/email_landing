@@ -76,7 +76,8 @@ const PILLARS = [
     {
         icon: GdprIcon,
         title: "GDPR Compliant",
-        description: "Ogni dato che elaboriamo rispetta la normativa europea.",
+        description:
+            "Ogni dato che elaboriamo rispetta la normativa europea sul trattamento dei dati personali",
     },
     {
         icon: CertificateIcon,
@@ -178,7 +179,8 @@ export default function Security() {
         <section className="relative overflow-hidden">
             <Image
                 src={WhiteLogo}
-                alt="" aria-hidden={true}
+                alt=""
+                aria-hidden={true}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4 w-1/2 h-auto rotate-75 opacity-50 -z-10"
             />
 
@@ -189,13 +191,13 @@ export default function Security() {
                 </span>
 
                 <Title as={1} className="max-w-220 text-center mt-4">
-                    Sicurezza Enterprise, Privacy Totale: GDPR, AI Act,{" "}
+                    Sicurezza Enterprise e Privacy Totale: GDPR, AI Act,{" "}
                     <span className="text-(--primary)">Data Retention</span>
                 </Title>
 
                 <p className="text-center text-(--subtext) mt-10 max-w-180">
-                    Se vuoi davvero innovazione, devi poter fidarti. Newmann è
-                    costruito su tre pilastri di sicurezza che non negoziamo:
+                    Se vuoi innovazione, devi poterti fidare. Newmann è
+                    costruito su tre pilastri di sicurezza fondamentali:
                 </p>
             </Reveal>
 
@@ -272,7 +274,9 @@ export default function Security() {
 
                     <Title className="max-w-220 text-center mt-4">
                         La Tua Privacy{" "}
-                        <span className="text-(--primary)">Non È Negoziabile</span>
+                        <span className="text-(--primary)">
+                            Non È Negoziabile
+                        </span>
                     </Title>
                 </Reveal>
 
@@ -337,7 +341,11 @@ export default function Security() {
                 </Section>
 
                 <Reveal className="flex justify-center mt-10">
-                    <Button type="primary" className="w-full sm:w-auto">
+                    <Button
+                        type="primary"
+                        className="w-full sm:w-auto"
+                        href="https://app.newmann.ai/privacy-policy"
+                    >
                         Leggi la Privacy Policy Completa
                     </Button>
                 </Reveal>
@@ -412,7 +420,11 @@ export default function Security() {
                 </Reveal>
 
                 <Reveal className="flex justify-center mt-10">
-                    <Button type="primary" className="w-full sm:w-auto">
+                    <Button
+                        type="primary"
+                        className="w-full sm:w-auto"
+                        href="https://app.newmann.ai/terms-of-service"
+                    >
                         Leggi i Termini Completi
                     </Button>
                 </Reveal>
