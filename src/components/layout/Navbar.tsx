@@ -197,20 +197,9 @@ export default function Navbar() {
                 <div className="hidden md:flex items-center gap-4">
                     <LangSwitcher />
                     <p className="text-(--subtext) font-thin text-sm">|</p>
-                    <Image
-                        src={GoogleIcon}
-                        alt="Google Logo"
-                        width={20}
-                        height={20}
-                        className="cursor-pointer hover:scale-110 transition-transform duration-200"
-                    />
-                    <Image
-                        src={OutlookIcon}
-                        alt="Outlook Logo"
-                        width={20}
-                        height={20}
-                        className="cursor-pointer hover:scale-110 transition-transform duration-200"
-                    />
+                    <Button type="secondary" className="w-full sm:w-auto">
+                        Inizia ora
+                    </Button>
                 </div>
 
                 {/* Mobile menu toggle */}
@@ -302,33 +291,8 @@ export default function Navbar() {
                     <LangSwitcher />
 
                     <div className="mt-auto">
-                        <Button
-                            type="secondary"
-                            className="w-full"
-                            icon={
-                                <Image
-                                    src={GoogleIcon}
-                                    alt="Google Logo"
-                                    width={20}
-                                    height={20}
-                                />
-                            }
-                        >
-                            Gmail
-                        </Button>
-                        <Button
-                            type="secondary"
-                            className="w-full mt-2"
-                            icon={
-                                <Image
-                                    src={OutlookIcon}
-                                    alt="Outlook Logo"
-                                    width={20}
-                                    height={20}
-                                />
-                            }
-                        >
-                            Outlook
+                        <Button type="primary" className="w-full">
+                            Inizia ora
                         </Button>
                     </div>
                 </div>

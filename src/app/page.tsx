@@ -64,41 +64,9 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 w-full max-w-100 sm:max-w-none">
-                    <p className="text-sm text-(--subtext)">Inizia con:</p>
-
-                    <Button
-                        type="secondary"
-                        className="w-full sm:w-auto"
-                        icon={
-                            <Image
-                                src={GoogleIcon}
-                                alt="Google Logo"
-                                width={20}
-                                height={20}
-                            />
-                        }
-                    >
-                        Gmail
+                    <Button type="primary" className="w-full sm:w-auto">
+                        Inizia ora
                     </Button>
-
-                    <Button
-                        type="secondary"
-                        className="w-full sm:w-auto"
-                        icon={
-                            <Image
-                                src={OutlookIcon}
-                                alt="Outlook Logo"
-                                width={20}
-                                height={20}
-                            />
-                        }
-                    >
-                        Outlook
-                    </Button>
-
-                    <p className="hidden sm:block text-sm text-(--subtext) opacity-0">
-                        Inizia con:
-                    </p>
                 </div>
             </Reveal>
 
@@ -224,7 +192,7 @@ export default function Home() {
                 </Link>
             </Reveal>
 
-            <Reveal className="flex flex-col items-center justify-center mt-24 md:mt-40 px-4">
+            {/* <Reveal className="flex flex-col items-center justify-center mt-24 md:mt-40 px-4">
                 <Title className="max-w-180 text-center">
                     Amato da aziende di{" "}
                     <span className="text-(--primary)">ogni dimensione</span>
@@ -237,7 +205,7 @@ export default function Home() {
                 <div className="mt-8 md:mt-16 w-full">
                     <Testimonials />
                 </div>
-            </Reveal>
+            </Reveal> */}
 
             <Reveal className="mt-24 md:mt-40 max-w-6xl w-full mx-auto px-4">
                 <div className="relative overflow-hidden rounded-[40px] bg-(--section-bg) border border-(--bento-stroke) py-12 md:py-24 px-6 md:px-8">
@@ -262,43 +230,9 @@ export default function Home() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 w-full max-w-100 sm:max-w-none">
-                            <p className="text-sm text-(--subtext)">
-                                Inizia con:
-                            </p>
-
-                            <Button
-                                type="secondary"
-                                className="w-full sm:w-auto"
-                                icon={
-                                    <Image
-                                        src={GoogleIcon}
-                                        alt="Google Logo"
-                                        width={20}
-                                        height={20}
-                                    />
-                                }
-                            >
-                                Gmail
+                            <Button type="primary" className="w-full sm:w-auto">
+                                Inizia ora
                             </Button>
-
-                            <Button
-                                type="secondary"
-                                className="w-full sm:w-auto"
-                                icon={
-                                    <Image
-                                        src={OutlookIcon}
-                                        alt="Outlook Logo"
-                                        width={20}
-                                        height={20}
-                                    />
-                                }
-                            >
-                                Outlook
-                            </Button>
-
-                            <p className="hidden sm:block text-sm text-(--subtext) opacity-0">
-                                Inizia con:
-                            </p>
                         </div>
                     </div>
                 </div>

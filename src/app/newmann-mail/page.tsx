@@ -76,7 +76,7 @@ export default function NewmannMail() {
                 </p>
 
                 <Button type="primary" className="w-full sm:w-auto mt-10">
-                    Prova Newmann Gratis per 14 Giorni
+                    Inizia ora
                 </Button>
             </Reveal>
 
@@ -230,7 +230,7 @@ export default function NewmannMail() {
                             </p>
 
                             <Button type="primary" className="mt-6">
-                                Vedi una Demo
+                                Inizia ora
                             </Button>
                         </div>
 
@@ -345,43 +345,9 @@ export default function NewmannMail() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 w-full max-w-100 sm:max-w-none px-4 sm:px-0">
-                            <p className="text-sm text-(--subtext)">
-                                Inizia con:
-                            </p>
-
-                            <Button
-                                type="secondary"
-                                className="w-full sm:w-auto"
-                                icon={
-                                    <Image
-                                        src={GoogleIcon}
-                                        alt="Google Logo"
-                                        width={20}
-                                        height={20}
-                                    />
-                                }
-                            >
-                                Gmail
+                            <Button type="primary" className="w-full sm:w-auto">
+                                Inizia ora
                             </Button>
-
-                            <Button
-                                type="secondary"
-                                className="w-full sm:w-auto"
-                                icon={
-                                    <Image
-                                        src={OutlookIcon}
-                                        alt="Outlook Logo"
-                                        width={20}
-                                        height={20}
-                                    />
-                                }
-                            >
-                                Outlook
-                            </Button>
-
-                            <p className="hidden sm:block text-sm text-(--subtext) opacity-0">
-                                Inizia con:
-                            </p>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,6 @@ const COLUMNS = [
         title: "PRODOTTI",
         links: [
             { label: "Newmann mail", href: "/newmann-mail" },
-            { label: "Digital twin", href: "" },
             { label: "Sicurezza", href: "/security" },
         ],
     },
@@ -24,8 +23,9 @@ const COLUMNS = [
         title: "AZIENDA",
         links: [
             { label: "Contattaci", href: "/contacts" },
-            { label: "Privacy", href: "/privacy" },
-            { label: "Termini", href: "/terms" },
+            { label: "Cookie Policy", href: "/cookies" },
+            { label: "Privacy Policy", href: "/privacy" },
+            { label: "Termini e Condizioni", href: "/terms" },
         ],
     },
 ];
