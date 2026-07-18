@@ -3,7 +3,7 @@ import type { Locale } from "@/i18n/LocaleContext";
 export const homeDictionary = {
     it: {
         hero: {
-            titleStart: "Rispondi alle email nella ",
+            titleStart: "Newmann | Rispondi alle email nella ",
             titleHighlight: "metà del tempo",
             subtitle:
                 "L'assistente AI che capisce il contesto, suggerisce le risposte giuste e tiene la tua inbox sotto controllo.",
@@ -57,7 +57,8 @@ export const homeDictionary = {
             link: "Scopri di più sulla sicurezza",
         },
         closingCta: {
-            titleStart: "Recupera tempo prezioso e concentrati sulle attività che ",
+            titleStart:
+                "Recupera tempo prezioso e concentrati sulle attività che ",
             titleHighlight: "contano davvero",
             subtitle:
                 "Lascia che Newmann si occupi delle email mentre tu fai crescere il tuo business.",
@@ -66,7 +67,7 @@ export const homeDictionary = {
     },
     en: {
         hero: {
-            titleStart: "Answer emails in ",
+            titleStart: "Newmann | Answer emails in ",
             titleHighlight: "half the time",
             subtitle:
                 "The AI assistant that understands context, suggests the right replies, and keeps your inbox under control.",

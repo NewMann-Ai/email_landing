@@ -268,7 +268,7 @@ export default function Navbar() {
                                 onClick={() => setOpen(false)}
                                 className="hover:text-(--primary) transition-colors duration-200"
                             >
-                                {t.team}
+                                {t.aziende}
                             </Link>
                             {/* <Link
                                 href=""
@@ -280,6 +280,13 @@ export default function Navbar() {
                         </div>
                     )}
 
+                    <Link
+                        href="/security"
+                        onClick={() => setOpen(false)}
+                        className="hover:text-(--primary) transition-colors duration-200"
+                    >
+                        {t.security}
+                    </Link>
                     <Link
                         href="/contacts"
                         onClick={() => setOpen(false)}
@@ -295,9 +302,9 @@ export default function Navbar() {
                         {t.faq}
                     </Link>
 
-                    <LangSwitcher />
+                    <div className="mt-auto flex flex-col gap-4">
+                        <LangSwitcher />
 
-                    <div className="mt-auto">
                         <Button
                             type="primary"
                             className="w-full"

@@ -56,7 +56,7 @@ export default function HomeContent() {
                 </div>
             </Reveal>
 
-            <Reveal className="hidden md:block">
+            <Reveal>
                 <MiniDashboard />
             </Reveal>
 

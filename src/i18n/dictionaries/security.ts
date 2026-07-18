@@ -68,7 +68,8 @@ export const securityDictionary = {
                 },
                 {
                     title: "Diritto all'oblio",
-                    description: "Cancella tutto in 24 ore senza giustificazioni.",
+                    description:
+                        "Cancella tutto in 24 ore senza giustificazioni.",
                 },
                 {
                     title: "Diritto di rettifica",
@@ -98,9 +99,9 @@ export const securityDictionary = {
             titleHighlight: "Senza Sorprese",
             inBreveTitle: "In Breve",
             inBreve: [
-                "Paghi mensilmente. Puoi cancellare in qualsiasi momento.",
+                "Puoi cancellare in qualsiasi momento.",
                 "Non condividiamo i tuoi dati. Non li usiamo per addestrare modelli.",
-                "Se usi Newmann per cose illegali, smentiamo la relazione.",
+                "Se usi Newmann per scopi illegali, disattiviamo il tuo account.",
             ],
             sectionsTitle: "Sezioni Principali",
             sections: [
@@ -110,19 +111,22 @@ export const securityDictionary = {
                 },
                 {
                     title: "Limitazioni di Responsabilità",
-                    description: "Newmann non è responsabile per danni indiretti.",
+                    description:
+                        "Newmann non è responsabile per danni indiretti.",
                 },
                 {
                     title: "Terminazione",
-                    description: "30 giorni di notice per parte.",
+                    description: "30 giorni di notice se è da parte nostra.",
                 },
                 {
-                    title: "Indennizzo",
-                    description: "Se violi copyright, paghiamo le conseguenze legali.",
+                    title: "Responsabilità dei Contenuti",
+                    description:
+                        "Sei responsabile della legalità dei tuoi dati e delle email che invii.",
                 },
                 {
                     title: "Modifiche ai Termini",
-                    description: "Ti notifico almeno 30 giorni prima.",
+                    description:
+                        "Ti avviseremo in anticipo in caso di aggiornamenti del contratto.",
                 },
                 {
                     title: "Legge Applicabile",
@@ -199,7 +203,8 @@ export const securityDictionary = {
                 },
                 {
                     title: "Right to erasure",
-                    description: "Delete everything within 24 hours, no justification needed.",
+                    description:
+                        "Delete everything within 24 hours, no justification needed.",
                 },
                 {
                     title: "Right to rectification",
@@ -229,9 +234,9 @@ export const securityDictionary = {
             titleHighlight: "No Surprises",
             inBreveTitle: "In Short",
             inBreve: [
-                "You pay monthly. You can cancel anytime.",
+                "You can cancel anytime.",
                 "We don't share your data. We don't use it to train models.",
-                "If you use Newmann for illegal activities, we disclaim the relationship.",
+                "If you use Newmann for illegal purposes, we will deactivate your account.",
             ],
             sectionsTitle: "Main Sections",
             sections: [
@@ -245,15 +250,17 @@ export const securityDictionary = {
                 },
                 {
                     title: "Termination",
-                    description: "30 days' notice from either party.",
+                    description: "30 days' notice if it's on our side.",
                 },
                 {
-                    title: "Indemnification",
-                    description: "If you infringe copyright, you cover the legal consequences.",
+                    title: "Responsibility for Content",
+                    description:
+                        "You are responsible for the legality of your data and the emails you send.",
                 },
                 {
                     title: "Changes to Terms",
-                    description: "We'll notify you at least 30 days in advance.",
+                    description:
+                        "We will notify you in advance of any contract updates.",
                 },
                 {
                     title: "Governing Law",

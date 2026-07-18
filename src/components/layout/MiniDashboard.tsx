@@ -298,10 +298,165 @@ export default function MiniDashboard() {
     const [modalAutomated, setModalAutomated] = useState<string>("ai");
     const [includeSignature, setIncludeSignature] = useState(true);
 
+    const renderLabelsTable = () => (
+        <table className="w-full min-w-120 my-10 md:my-0">
+            <thead>
+                <tr className="border-b border-[#eeeeee]">
+                    <th className="text-left py-2.5 px-4 font-normal">
+                        <span className="inline-flex items-center gap-1 text-xs text-[#999]">
+                            Title
+                            <SortFilterIcon className="w-3 h-3" />
+                            <FunnelIcon className="w-3 h-3" />
+                        </span>
+                    </th>
+                    <th className="text-left py-2.5 px-4 font-normal">
+                        <span className="inline-flex items-center gap-1 text-xs text-[#999] whitespace-nowrap">
+                            Automated drafts
+                            <SortFilterIcon className="w-3 h-3" />
+                            <FunnelIcon className="w-3 h-3" />
+                        </span>
+                    </th>
+                    <th className="text-right py-2.5 px-4 text-xs text-[#999] font-normal">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {LABELS.map((label) => (
+                    <tr
+                        key={label.id}
+                        className="border-b border-[#f2f2f2] last:border-0 transition-colors duration-150"
+                        style={{
+                            backgroundColor:
+                                hoveredRow === label.id
+                                    ? "#f9f9f9"
+                                    : "transparent",
+                        }}
+                        onMouseEnter={() => setHoveredRow(label.id)}
+                        onMouseLeave={() => setHoveredRow(null)}
+                    >
+                        {/* Title */}
+                        <td className="py-3 px-4">
+                            <span
+                                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border whitespace-nowrap ${
+                                    label.isSystem
+                                        ? "bg-[#e8f5f5] text-[#229799] border-[#c5e5e5]"
+                                        : "bg-[#eef3f8] text-[#4a90c4] border-[#d0e4f0]"
+                                }`}
+                            >
+                                {label.isSystem && (
+                                    <Image
+                                        src={FaviconIcon}
+                                        alt=""
+                                        width={10}
+                                        height={10}
+                                        className="shrink-0"
+                                    />
+                                )}
+                                {label.name}
+                            </span>
+                        </td>
+
+                        {/* Automated drafts */}
+                        <td className="py-3 px-4">
+                            {label.hasAutomation && (
+                                <div className="inline-flex items-center gap-1 rounded-lg border border-[#e6e6e6] bg-[#fafafa]">
+                                    {AUTOMATED_OPTS.map((opt) => {
+                                        const isActive =
+                                            automated[label.id] === opt.value;
+                                        return (
+                                            <button
+                                                key={opt.value}
+                                                onClick={() =>
+                                                    setAutomated((prev) => ({
+                                                        ...prev,
+                                                        [label.id]: opt.value,
+                                                    }))
+                                                }
+                                                className={`px-2.5 py-1.5 rounded-md text-xs font-medium select-none transition-colors cursor-pointer whitespace-nowrap ${
+                                                    isActive
+                                                        ? "bg-(--primary-10) text-(--primary)"
+                                                        : "text-[#aaa] hover:text-[#666]"
+                                                }`}
+                                            >
+                                                {opt.label}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            )}
+                        </td>
+
+                        {/* Actions */}
+                        <td className="py-3 px-4">
+                            {!label.isSystem && (
+                                <div className="flex items-center justify-end gap-2">
+                                    <TrashIcon className="w-4 h-4 text-[#e53e3e] cursor-default" />
+                                    <DotsIcon className="w-4 h-4 text-[#232323] cursor-default" />
+                                </div>
+                            )}
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+
+    const renderPagination = () => (
+        <div className="flex items-center justify-center md:justify-end gap-1.5 px-4 py-3">
+            <button className="w-7 h-7 flex items-center justify-center rounded-md text-[#aaa] cursor-default">
+                <ChevronPaginationIcon
+                    direction="left"
+                    className="w-3.5 h-3.5"
+                />
+            </button>
+            <button className="w-7 h-7 flex items-center justify-center rounded-md border border-[#229799] text-[#333] text-xs cursor-default">
+                1
+            </button>
+            <button className="w-7 h-7 flex items-center justify-center rounded-md text-[#aaa] cursor-default">
+                <ChevronPaginationIcon
+                    direction="right"
+                    className="w-3.5 h-3.5"
+                />
+            </button>
+        </div>
+    );
+
     return (
         <div className="mx-auto mt-20 mb-10 max-w-6xl px-4">
+            {/* ── Mobile: standalone labels card ── */}
+            <div className="md:hidden">
+                <div className="bg-white rounded-2xl border border-[#e8e8e8] shadow-[0_20px_50px_#2297991a] overflow-hidden">
+                    <div className="flex flex-col gap-4 px-4 py-4 border-b mb-4 border-[#eeeeee]">
+                        <h2 className="text-2xl text-[#232323]">Your labels</h2>
+                        <div className="flex items-center">
+                            <input
+                                readOnly
+                                placeholder="Search labels..."
+                                className="flex-1 min-w-0 px-3 py-2.5 rounded-l-lg border border-r-0 border-[#e6e6e6] text-sm text-[#333] placeholder-[#bbb] outline-none bg-white"
+                            />
+                            <button className="px-3 py-2.5 rounded-r-lg bg-[#229799] border border-[#229799] cursor-default">
+                                <SearchIcon className="w-4 h-4 text-white" />
+                            </button>
+                        </div>
+                        <button
+                            onClick={() => setShowCreateLabel(true)}
+                            className="new-label-btn flex items-center justify-center gap-1 px-3 py-2.5 rounded-lg text-white text-sm font-medium cursor-pointer select-none transition-transform duration-200 w-full"
+                        >
+                            <PlusIcon className="w-3.5 h-3.5" />
+                            New label
+                        </button>
+                    </div>
+
+                    <div className="overflow-x-auto">{renderLabelsTable()}</div>
+
+                    {renderPagination()}
+                </div>
+            </div>
+
+            {/* ── Desktop: full dashboard mockup ── */}
             <div
-                className="relative rounded-2xl overflow-hidden border border-[#e0e0e0] shadow-[0_40px_60px_#2297991a]"
+                className="hidden md:block relative rounded-2xl overflow-hidden border border-[#e0e0e0] shadow-[0_40px_60px_#2297991a]"
                 style={{ height: 580 }}
             >
                 <div className="flex h-full bg-[#f7f7f7] text-[#333]">
@@ -449,147 +604,11 @@ export default function MiniDashboard() {
                                 </div>
 
                                 {/* Table */}
-                                <table className="w-full">
-                                    <thead>
-                                        <tr className="border-b border-[#eeeeee]">
-                                            <th className="text-left py-2.5 px-4 font-normal">
-                                                <span className="inline-flex items-center gap-1 text-xs text-[#999]">
-                                                    Title
-                                                    <SortFilterIcon className="w-3 h-3" />
-                                                    <FunnelIcon className="w-3 h-3" />
-                                                </span>
-                                            </th>
-                                            <th className="text-left py-2.5 px-4 font-normal">
-                                                <span className="inline-flex items-center gap-1 text-xs text-[#999]">
-                                                    Automated drafts
-                                                    <SortFilterIcon className="w-3 h-3" />
-                                                    <FunnelIcon className="w-3 h-3" />
-                                                </span>
-                                            </th>
-                                            <th className="text-right py-2.5 px-4 text-xs text-[#999] font-normal">
-                                                Actions
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {LABELS.map((label) => (
-                                            <tr
-                                                key={label.id}
-                                                className="border-b border-[#f2f2f2] last:border-0 transition-colors duration-150"
-                                                style={{
-                                                    backgroundColor:
-                                                        hoveredRow === label.id
-                                                            ? "#f9f9f9"
-                                                            : "transparent",
-                                                }}
-                                                onMouseEnter={() =>
-                                                    setHoveredRow(label.id)
-                                                }
-                                                onMouseLeave={() =>
-                                                    setHoveredRow(null)
-                                                }
-                                            >
-                                                {/* Title */}
-                                                <td className="py-3 px-4">
-                                                    <span
-                                                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border ${
-                                                            label.isSystem
-                                                                ? "bg-[#e8f5f5] text-[#229799] border-[#c5e5e5]"
-                                                                : "bg-[#eef3f8] text-[#4a90c4] border-[#d0e4f0]"
-                                                        }`}
-                                                    >
-                                                        {label.isSystem && (
-                                                            <Image
-                                                                src={
-                                                                    FaviconIcon
-                                                                }
-                                                                alt=""
-                                                                width={10}
-                                                                height={10}
-                                                                className="shrink-0"
-                                                            />
-                                                        )}
-                                                        {label.name}
-                                                    </span>
-                                                </td>
-
-                                                {/* Automated drafts */}
-                                                <td className="py-3 px-4">
-                                                    {label.hasAutomation && (
-                                                        <div className="inline-flex items-center gap-1 rounded-lg border border-[#e6e6e6] bg-[#fafafa]">
-                                                            {AUTOMATED_OPTS.map(
-                                                                (opt) => {
-                                                                    const isActive =
-                                                                        automated[
-                                                                            label
-                                                                                .id
-                                                                        ] ===
-                                                                        opt.value;
-                                                                    return (
-                                                                        <button
-                                                                            key={
-                                                                                opt.value
-                                                                            }
-                                                                            onClick={() =>
-                                                                                setAutomated(
-                                                                                    (
-                                                                                        prev,
-                                                                                    ) => ({
-                                                                                        ...prev,
-                                                                                        [label.id]:
-                                                                                            opt.value,
-                                                                                    }),
-                                                                                )
-                                                                            }
-                                                                            className={`px-2.5 py-1.5 rounded-md text-xs font-medium select-none transition-colors cursor-pointer ${
-                                                                                isActive
-                                                                                    ? "bg-(--primary-10) text-(--primary)"
-                                                                                    : "text-[#aaa] hover:text-[#666]"
-                                                                            }`}
-                                                                        >
-                                                                            {
-                                                                                opt.label
-                                                                            }
-                                                                        </button>
-                                                                    );
-                                                                },
-                                                            )}
-                                                        </div>
-                                                    )}
-                                                </td>
-
-                                                {/* Actions */}
-                                                <td className="py-3 px-4">
-                                                    {!label.isSystem && (
-                                                        <div className="flex items-center justify-end gap-2">
-                                                            <TrashIcon className="w-4 h-4 text-[#e53e3e] cursor-default" />
-                                                            <DotsIcon className="w-4 h-4 text-[#232323] cursor-default" />
-                                                        </div>
-                                                    )}
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-
-                                {/* Pagination */}
-                                <div className="flex items-center justify-end gap-1.5 px-4 py-3">
-                                    <button className="w-7 h-7 flex items-center justify-center rounded-md text-[#aaa] cursor-default">
-                                        <ChevronPaginationIcon
-                                            direction="left"
-                                            className="w-3.5 h-3.5"
-                                        />
-                                    </button>
-                                    <button className="w-7 h-7 flex items-center justify-center rounded-md border border-[#229799] text-[#333] text-xs cursor-default">
-                                        1
-                                    </button>
-                                    <button className="w-7 h-7 flex items-center justify-center rounded-md text-[#aaa] cursor-default">
-                                        <ChevronPaginationIcon
-                                            direction="right"
-                                            className="w-3.5 h-3.5"
-                                        />
-                                    </button>
+                                <div className="overflow-x-auto">
+                                    {renderLabelsTable()}
                                 </div>
+
+                                {renderPagination()}
                             </div>
                         </main>
                     </div>
