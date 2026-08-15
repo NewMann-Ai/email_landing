@@ -126,8 +126,8 @@ export const newmannMailDictionary = {
       body: "The Newmie chatbot (WIP) lets you get even more efficient at managing your email:",
       benefits: [
         "Find information scattered across your inbox. Need that invoice a supplier sent 6 months ago? Ask Newmie and he will find it in 5 seconds.",
-        "Write emails from scratch. Need to send an email but don't want to waste time writing it from nothing? Ask Newmie and he will generate it, taking your tone and past emails into account",
-        "Set up labels and rules. Need to create a specific label? Describe what you want to Newmie and he will set it up, with nothing manual required from you",
+        "Write emails from scratch. Need to send an email but don't want to waste time writing it from nothing? Ask Newmie and he will generate it, taking your tone and past emails into account.",
+        "Set up labels and rules. Need to create a specific label? Describe what you want to Newmie and he will set it up, with nothing manual required from you.",
       ],
       imageAlt: "AI assistant organizing emails through chat",
     },
