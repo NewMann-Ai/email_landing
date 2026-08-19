@@ -206,7 +206,7 @@ export default function SecurityContent() {
           <Button
             type="primary"
             className="w-full sm:w-auto"
-            href="https://app.newmann.ai/privacy-policy"
+            href="/privacy"
           >
             {t.privacy.readFullPolicy}
           </Button>
@@ -282,7 +282,7 @@ export default function SecurityContent() {
           <Button
             type="primary"
             className="w-full sm:w-auto"
-            href="https://app.newmann.ai/terms-of-service"
+            href="/terms"
           >
             {t.terms.readFullTerms}
           </Button>

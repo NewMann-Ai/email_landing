@@ -32,15 +32,15 @@ export default function Footer() {
             links: [
                 {
                     label: t.links.cookiePolicy,
-                    href: "https://app.newmann.ai/cookie-policy",
+                    href: "/cookies",
                 },
                 {
                     label: t.links.privacyPolicy,
-                    href: "https://app.newmann.ai/privacy-policy",
+                    href: "/privacy",
                 },
                 {
                     label: t.links.terms,
-                    href: "https://app.newmann.ai/terms-of-service",
+                    href: "/terms",
                 },
             ],
         },

@@ -126,7 +126,7 @@ const THIRD_PARTY_SERVICES = [
             "frontend hosting platform. Vercel does not set analytics cookies in our deployment. If Vercel Web Analytics is enabled, it uses a privacy-preserving server-side hash and does not use cookies.",
     },
     {
-        title: "Render",
+        title: "Microsoft Azure",
         description:
             "backend hosting platform. Infrastructure-level only; no cookies set in the browser.",
     },
@@ -173,7 +173,7 @@ export default function Cookies() {
                     Internal Document · v1.0
                 </p>
                 <p className="text-center text-(--subtext) text-sm mt-1">
-                    Last updated: May 2025
+                    Last updated: June 2026
                 </p>
             </Reveal>
 

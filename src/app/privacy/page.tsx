@@ -262,7 +262,7 @@ const SUBPROCESSOR_ROWS = [
         "Email content, body, attachment content for AI processing",
     ],
     ["Google Cloud", "Backend infrastructure", "All platform data (hosting)"],
-    ["Render", "Backend hosting", "Application and log data"],
+    ["Microsoft Azure", "Backend hosting", "Application and log data"],
     ["Vercel", "Frontend hosting", "Web traffic, page view data"],
     ["PostHog", "Product analytics", "Usage and behavioral data"],
     [
@@ -294,8 +294,9 @@ const INTERNATIONAL_TRANSFERS = [
         description: "United States – covered by Standard Contractual Clauses (SCCs)",
     },
     {
-        title: "Render",
-        description: "United States – covered by Standard Contractual Clauses (SCCs)",
+        title: "Microsoft Azure",
+        description:
+            "European Union (EU Cloud) – no transfer outside the EEA, no SCCs needed",
     },
     {
         title: "PostHog",
@@ -310,7 +311,7 @@ const INTERNATIONAL_TRANSFERS = [
 
 const DATA_SECURITY_MEASURES = [
     "Encryption in transit (HTTPS/TLS)",
-    "Encryption at rest — Supabase, Render (Frankfurt, EU), and Pinecone all encrypt stored data at rest by default (AES-256).",
+    "Encryption at rest — Supabase, Microsoft Azure (EU), and Pinecone all encrypt stored data at rest by default (AES-256).",
     "Access control and role-based permissions",
     "Monitoring and structured logging",
     "Regular security assessments",
@@ -379,7 +380,7 @@ export default function Privacy() {
                     Internal Document · v1.0
                 </p>
                 <p className="text-center text-(--subtext) text-sm mt-1">
-                    Last updated: May 2026
+                    Last updated: June 2026
                 </p>
             </Reveal>
 
@@ -473,7 +474,7 @@ export default function Privacy() {
 
                     <SubSection title="2.1 Changes to This Policy and Your Duty to Inform Us">
                         <p>
-                            This version was last updated on 06/05/2026. If
+                            This version was last updated on 19/06/2026. If
                             you continue to use the platform after changes
                             are posted, you are considered to have accepted
                             the updated policy. Please keep us informed if
