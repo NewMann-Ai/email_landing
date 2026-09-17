@@ -1,16 +1,27 @@
-import cookiePolicy from "@/content/legal/cookie-policy";
-import privacyPolicy from "@/content/legal/privacy-policy";
-import termsOfService from "@/content/legal/terms-of-service";
 import type { LegalDocumentType, LegalVersion, LegalVersionSummary } from "@/types/legalDocuments";
 
 // Legal documents are edited and published from the back office; this site only reads the
 // published versions from the backend (NWM-115).
 //
 // Caching: pages are static and refreshed every hour, and immediately when the backend calls
-// /api/revalidate after a publication (tag below). If the backend does not answer, the page
-// falls back to the v1.0 copy kept in src/content/legal.
+// /api/revalidate after a publication (tag below).
+//
+// No local copy of the texts on purpose (NWM-115 review): if the backend does not answer, the
+// error is thrown. A failed background regeneration keeps serving the last page generated from
+// the backend, and a failed build keeps the previous deployment online. A fallback would instead
+// replace the page with an outdated text presented as the one in force.
 
-const API_URL = (process.env.LEGAL_API_URL ?? "http://localhost:8080").replace(/\/$/, "");
+function apiUrl(): string {
+    const url = process.env.LEGAL_API_URL;
+    if (url) {
+        return url.replace(/\/$/, "");
+    }
+    // Without it every request would go to localhost: fail loudly instead of looking disconnected.
+    if (process.env.NODE_ENV === "production") {
+        throw new Error("LEGAL_API_URL is not set: the legal pages cannot reach the backend");
+    }
+    return "http://localhost:8080";
+}
 
 export const LEGAL_REVALIDATE_SECONDS = 3600;
 
@@ -22,29 +33,10 @@ export const LEGAL_PAGE_PATHS: Record<LegalDocumentType, string> = {
     "terms-of-service": "/terms",
 };
 
-const FALLBACK: Record<LegalDocumentType, LegalVersion> = {
-    "privacy-policy": fallbackVersion("privacy-policy", "Privacy Policy", privacyPolicy),
-    "cookie-policy": fallbackVersion("cookie-policy", "Cookie Policy", cookiePolicy),
-    "terms-of-service": fallbackVersion("terms-of-service", "Terms of Service", termsOfService),
-};
-
-function fallbackVersion(type: LegalDocumentType, title: string, bodyMarkdown: string): LegalVersion {
-    return {
-        type,
-        version: "1.0",
-        current: true,
-        upcoming: false,
-        effectiveFrom: "2026-06-19",
-        publishedAt: null,
-        contents: [{ language: "en", title, bodyMarkdown }],
-        next: null,
-    };
-}
-
 class NotFoundError extends Error {}
 
 async function fetchJson<T>(path: string, type: LegalDocumentType): Promise<T> {
-    const response = await fetch(`${API_URL}/api/public/legal-documents/${path}`, {
+    const response = await fetch(`${apiUrl()}/api/public/legal-documents/${path}`, {
         next: { revalidate: LEGAL_REVALIDATE_SECONDS, tags: [legalCacheTag(type)] },
         signal: AbortSignal.timeout(5000),
     });
@@ -58,12 +50,7 @@ async function fetchJson<T>(path: string, type: LegalDocumentType): Promise<T> {
 }
 
 export async function getCurrentLegalVersion(type: LegalDocumentType): Promise<LegalVersion> {
-    try {
-        return await fetchJson<LegalVersion>(type, type);
-    } catch (error) {
-        console.error(`[legal] using the fallback copy of ${type}:`, error);
-        return FALLBACK[type];
-    }
+    return fetchJson<LegalVersion>(type, type);
 }
 
 // null when the version does not exist (or is a draft): the page answers 404.
@@ -74,19 +61,10 @@ export async function getLegalVersion(type: LegalDocumentType, version: string):
         if (error instanceof NotFoundError) {
             return null;
         }
-        if (version === FALLBACK[type].version) {
-            console.error(`[legal] using the fallback copy of ${type} v${version}:`, error);
-            return FALLBACK[type];
-        }
         throw error;
     }
 }
 
 export async function getLegalVersions(type: LegalDocumentType): Promise<LegalVersionSummary[]> {
-    try {
-        return await fetchJson<LegalVersionSummary[]>(`${type}/versions`, type);
-    } catch (error) {
-        console.error(`[legal] version history of ${type} unavailable:`, error);
-        return [];
-    }
+    return fetchJson<LegalVersionSummary[]>(`${type}/versions`, type);
 }
