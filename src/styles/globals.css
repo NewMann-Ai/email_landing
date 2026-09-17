@@ -71,6 +71,28 @@ body {
     animation: marquee-right 40s linear infinite;
 }
 
+/* Legal pages (NWM-115): one fade-in for the whole document text. */
+@keyframes legal-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(2.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-legal-fade-in {
+    animation: legal-fade-in 700ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-legal-fade-in {
+        animation: none;
+    }
+}
+
 @keyframes pulse-scale {
     0%,
     100% {
