@@ -20,7 +20,8 @@ export async function ArchivedLegalDocumentPage({ type, version }: { type: Legal
     if (!document) {
         notFound();
     }
-    // The version in force has a single address: the page without /v/.
+    // The version in force has a single address: the page without /v/. An upcoming version keeps
+    // its own page during the notice period.
     if (document.current) {
         redirect(LEGAL_PAGE_PATHS[type]);
     }

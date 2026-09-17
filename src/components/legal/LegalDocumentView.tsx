@@ -20,6 +20,9 @@ const LABELS: Record<LegalLanguage, {
     inForceFrom: string;
     archivedNotice: (version: string) => string;
     readCurrent: string;
+    upcomingNotice: (version: string, date: string) => string;
+    readUpcoming: string;
+    upcomingPageNotice: (version: string, date: string) => string;
 }> = {
     en: {
         subtitle: {
@@ -32,6 +35,9 @@ const LABELS: Record<LegalLanguage, {
         inForceFrom: "in force from",
         archivedNotice: (version) => `You are reading version ${version}, which is no longer in force.`,
         readCurrent: "Read the current version",
+        upcomingNotice: (version, date) => `A new version (${version}) takes effect on ${date}.`,
+        readUpcoming: "Read the new version",
+        upcomingPageNotice: (version, date) => `Version ${version} takes effect on ${date}. Until then the current version applies.`,
     },
     it: {
         subtitle: {
@@ -44,6 +50,9 @@ const LABELS: Record<LegalLanguage, {
         inForceFrom: "in vigore dal",
         archivedNotice: (version) => `Stai leggendo la versione ${version}, non più in vigore.`,
         readCurrent: "Leggi la versione in vigore",
+        upcomingNotice: (version, date) => `Una nuova versione (${version}) entrerà in vigore il ${date}.`,
+        readUpcoming: "Leggi la nuova versione",
+        upcomingPageNotice: (version, date) => `La versione ${version} entrerà in vigore il ${date}. Fino ad allora vale la versione in vigore.`,
     },
 };
 
@@ -72,7 +81,11 @@ export default function LegalDocumentView({
     const language = content?.language ?? "en";
     const labels = LABELS[language];
     const lastUpdated = formatDate(document.effectiveFrom, language, { month: "long", year: "numeric" });
-    const previous = versions.filter((item) => !item.current && item.version !== document.version);
+    const longDate = (value: string | null) => formatDate(value, language, { day: "numeric", month: "long", year: "numeric" }) ?? "";
+    // Past versions only: the upcoming one is announced, not listed as "previous".
+    const previous = versions.filter((item) => !item.current && !item.upcoming && item.version !== document.version);
+    const noticeClass = "mt-12 rounded-2xl border border-(--primary) bg-(--primary-10) p-4 text-sm text-(--text)";
+    const noticeLinkClass = "text-(--primary) hover:text-(--primary-hover) transition-colors duration-200 font-semibold";
 
     return (
         <section className="relative overflow-hidden">
@@ -105,13 +118,28 @@ export default function LegalDocumentView({
             </Reveal>
 
             <div className="max-w-3xl w-full mx-auto px-4 mb-32">
-                {!document.current && (
-                    <div className="mt-12 rounded-2xl border border-(--primary) bg-(--primary-10) p-4 text-sm text-(--text)">
+                {document.next && (
+                    <div className={noticeClass}>
+                        {labels.upcomingNotice(document.next.version, longDate(document.next.effectiveFrom))}{" "}
+                        <Link href={`${basePath}/v/${encodeURIComponent(document.next.version)}`} className={noticeLinkClass}>
+                            {labels.readUpcoming}
+                        </Link>
+                    </div>
+                )}
+
+                {document.upcoming && (
+                    <div className={noticeClass}>
+                        {labels.upcomingPageNotice(document.version, longDate(document.effectiveFrom))}{" "}
+                        <Link href={basePath} className={noticeLinkClass}>
+                            {labels.readCurrent}
+                        </Link>
+                    </div>
+                )}
+
+                {!document.current && !document.upcoming && (
+                    <div className={noticeClass}>
                         {labels.archivedNotice(document.version)}{" "}
-                        <Link
-                            href={basePath}
-                            className="text-(--primary) hover:text-(--primary-hover) transition-colors duration-200 font-semibold"
-                        >
+                        <Link href={basePath} className={noticeLinkClass}>
                             {labels.readCurrent}
                         </Link>
                     </div>
@@ -128,7 +156,7 @@ export default function LegalDocumentView({
                         <h2 className="text-base font-semibold text-(--text)">{labels.previousVersions}</h2>
                         <ul className="flex flex-col gap-2 mt-3 text-sm text-(--subtext)">
                             {previous.map((item) => {
-                                const inForceFrom = formatDate(item.effectiveFrom, language, { day: "numeric", month: "long", year: "numeric" });
+                                const inForceFrom = longDate(item.effectiveFrom);
                                 return (
                                     <li key={item.version}>
                                         <Link

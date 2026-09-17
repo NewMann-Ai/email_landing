@@ -33,9 +33,11 @@ function fallbackVersion(type: LegalDocumentType, title: string, bodyMarkdown: s
         type,
         version: "1.0",
         current: true,
+        upcoming: false,
         effectiveFrom: "2026-06-19",
         publishedAt: null,
         contents: [{ language: "en", title, bodyMarkdown }],
+        next: null,
     };
 }
 
